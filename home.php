@@ -1,25 +1,61 @@
+<?php
+include "./connection.php";
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header('location:connection.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <?php
+  $id = $_SESSION['user'];
+  $sql = $conn->prepare("SELECT * FROM `user` WHERE `id`='$id'");
+  $sql->execute();
+  $fetch = $sql->fetch();
+  ?>
+  <script>
+    (function() {
+      // removing the message 3 seconds after the page load
+      setTimeout(function() {
+        document.getElementById('welcome').remove();
+      }, 2000)
+    })();
+  </script>
+  <div class="container">
+    <div class="user">
+      <h3 id="welcome">Welcome</h3>
+      <h4><?php echo $fetch['username'] ?></h4>
+    </div>
+    <?php if (isset($_SESSION['message'])) : ?>
+      <div class="alert alert-<?php echo $_SESSION['message']['alert'] ?> msg">
+        <?php echo $_SESSION['message']['text'] ?></div>
+      <script>
+        (function() {
+          // removing the message 3 seconds after the page load
+          setTimeout(function() {
+            document.querySelector('.msg').remove();
+          }, 3000)
+        })();
+      </script>
+    <?php
+    endif;
+    // clearing the message
+    unset($_SESSION['message']);
+    ?>
     <div class="container-md testimonial-grid">
       <div class="card text-white bg-primary mb-4 grid-1">
         <div class="card-header">Objectif</div>
@@ -144,5 +180,6 @@
         </div>
       </div>
     </div>
-  </body>
+</body>
+
 </html>

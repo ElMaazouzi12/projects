@@ -6,5 +6,5 @@
 	if(!$conn){
 		die("Fatal Error: Connection Failed!");
 	}
-	echo "connected seccussfully";
+	// echo "connected seccussfully";
 ?>

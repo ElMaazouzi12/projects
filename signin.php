@@ -22,7 +22,7 @@
 					setcookie("username", $username, time() - (86400 * 30));
 					setcookie("password", $password , time() - (86400 * 30));
 				}
-				header("location: contact.html");
+				header("location: home.php");
 			} else{
 				echo "
 				<script>alert('Invalid username or password')</script>
