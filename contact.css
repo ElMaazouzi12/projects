@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Architects+Daughter&family=Cairo&family=Creepster&family=Dongle:wght@300&family=Josefin+Sans:ital,wght@1,500&family=Kanit:wght@300&family=Mochiy+Pop+P+One&family=Outfit:wght@200;300&family=Poppins:wght@400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&family=Rubik+Beastly&family=Sedgwick+Ave&display=swap');
+:root {
+    --first-color : hsl(250, 69%, 61%);
+    --first-color-second : hsl(250, 69%, 61%);
+    --first-color-alt: hsl(250, 57%, 53%);
+    --first-color-lighter: hsl(250, 92%, 85%);
+    --title-color: hsl(250, 8%, 15%);
+    --text-color: hsl(250, 8%, 45%);
+    --text-color-light: hsl(250,8%, 65%);
+    --input-color :  hsl(250, 70%, 96%);
+    --body-color:  hsl(250, 60%, 99%);
+    --close_1 : #000;
+
+    --body-font: 'Poppins', sans-serif;
+    --box-shadow-nav:-12px 4px 18px 0px rgb(0 0 0 / 15%);
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin:0; 
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    position: relative;
+    width: 100vw;
+    overflow-x: hidden;
+    font-family: var(--body-font);
+    background: var(--body-color);
+}
+.contact {
+    width: 80%;
+    margin: 20px auto;
+    padding: 0rem 1rem;
+    position: relative;
+    box-shadow: var(--box-shadow-nav);
+    border: none;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: var(--title-color);
+    font-weight: bold;
+}
+h3 {
+    color: var(--title-color);
+}
+input,textarea {
+    background:var(--input-color) ;
+    color:var(--text-color) ;
+    font-family: var(--body-font);
+    font-weight: 600;
+    outline: none;
+    padding: 0.25rem 0.5rem 0.5rem 0;
+    border: none;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    grid-template-rows: repeat(2,auto);
+    margin-top: 20px;
+}
+textarea {
+    width: 100%;
+}
+input {
+    width: 80%;
+}
+.part1 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.part2 {
+    border-left: 2px solid var(--text-color);
+    padding-left: 30px;
+}
+.part3 {
+    margin-top: 30px;
+    border-top:2px solid var(--text-color) ;
+    padding-top: 15px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+form button {
+    background: var(--first-color);
+    display: inline-block;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 7px;
+    text-align: center;
+    align-self: flex-start;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+form button i {
+    font-size: 23px;
+}
+form button:hover  {
+    background: var(--first-color-alt);
+    cursor: pointer;
+}
+.button {
+    margin-bottom: 10px;
+}
